@@ -1,5 +1,6 @@
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +11,12 @@ public class Main {
         //создаём  объект телеграм бота API
         TelegramBotsApi telegram = new TelegramBotsApi();
 
-
-
+        // создаем объект самого бота
+        Bot bot = new Bot();
+        try {
+            telegram.registerBot(bot);
+        }catch (TelegramApiRequestException e){
+            e.printStackTrace();
+        }
     }
 }

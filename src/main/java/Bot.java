@@ -1,6 +1,7 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Bot extends TelegramLongPollingBot {
 
@@ -13,8 +14,14 @@ public class Bot extends TelegramLongPollingBot {
       //SendMassage-класс для отправки сообщений  //setChatId - выставляет ИД человека который написал боту
       //update.getMessage().getChatId() - ИД того-же человека
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
-
-
+        if(update.getMessage().getText().equals("Привет")){
+            sendMessage.setText("Привет, друг!");
+            try {
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
