@@ -5,6 +5,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Bot extends TelegramLongPollingBot {
 
+    Book book = new Book();
+
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -33,4 +35,9 @@ public class Bot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "1381210707:AAH68fziyIQE91UlKRQC_I1ftdr-KXTfEoQ";
     }
+
+
+
+
+
 }
