@@ -4,7 +4,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -16,7 +15,6 @@ public class Bot extends TelegramLongPollingBot {
 
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
     private long chat_id;
-
 
     @Override
     public void onUpdateReceived(Update update) {
