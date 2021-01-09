@@ -5,6 +5,7 @@ public class Card {
     String expDate;
     String cvc;
     String name;
+    int amount;
 
     public Card(String srcPan, String desPan, String expDate, String cvc, String name) {
         this.srcPan = srcPan;

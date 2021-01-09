@@ -12,7 +12,7 @@ import java.net.URL;
 public class Bot extends TelegramLongPollingBot {
     // Создаём объект книги
     Book book = new Book();
-
+  //  Card card = new Card("1566 4646 4544 5454",);
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
     private long chat_id;
 
