@@ -1,18 +1,8 @@
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+public class Book /* extends TelegramLongPollingBot*/ {
+    /* Создаём объект карточки
+   // Book book = new Book();
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.net.URL;
-
-public class Bot extends TelegramLongPollingBot {
-    // Создаём объект книги
-    Book book = new Book();
-  //  Card card = new Card("1566 4646 4544 5454",);
+    Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
     private long chat_id;
 
@@ -47,9 +37,9 @@ public class Bot extends TelegramLongPollingBot {
 
     public String input(String msg){
         if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет")) {
-            return "Привет друг!";
+            return "Здравствуйте, хотите совершить перевод?";
         }
-        if(msg.contains("Информация о книге")){
+        if(msg.contains("Информация о карточке")){
             return getInfoBook();
         }
         return msg;
@@ -57,7 +47,7 @@ public class Bot extends TelegramLongPollingBot {
 
     public String getInfoBook(){
         try {
-            URL url = new URL(book.getImage());
+            URL url = new URL(card.getImage());
             // берем сслыку на изображение
             BufferedImage img = ImageIO.read(url);
             // качаем изображение в буфер
@@ -86,5 +76,5 @@ public class Bot extends TelegramLongPollingBot {
     }
 
 
-
+*/
 }

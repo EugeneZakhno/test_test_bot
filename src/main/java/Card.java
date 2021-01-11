@@ -1,3 +1,4 @@
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
 public class Card {
     String srcPan;
@@ -6,6 +7,10 @@ public class Card {
     String cvc;
     String name;
     int amount;
+
+    public Card() {
+
+    }
 
     public Card(String srcPan, String desPan, String expDate, String cvc, String name) {
         this.srcPan = srcPan;
