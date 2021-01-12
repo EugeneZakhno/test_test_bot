@@ -1,6 +1,6 @@
-public class Book /* extends TelegramLongPollingBot*/ {
-    /* Создаём объект карточки
-   // Book book = new Book();
+public class Bot /* extends TelegramLongPollingBot*/ {
+     Создаём объект карточки
+
 
     Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
@@ -40,41 +40,9 @@ public class Book /* extends TelegramLongPollingBot*/ {
             return "Здравствуйте, хотите совершить перевод?";
         }
         if(msg.contains("Информация о карточке")){
-            return getInfoBook();
+            return getInfoCard();
         }
         return msg;
     }
 
-    public String getInfoBook(){
-        try {
-            URL url = new URL(card.getImage());
-            // берем сслыку на изображение
-            BufferedImage img = ImageIO.read(url);
-            // качаем изображение в буфер
-            File outputfile = new File("image.jpg");
-            //создаем новый файл в который поместим
-            //скаченое изображение
-            ImageIO.write(img, "jpg", outputfile);
-            //преобразовуем наше буферное изображение
-            //в новый файл
-            SendPhoto sendPhoto = new SendPhoto().setChatId(chat_id);
-            sendPhoto.setPhoto(outputfile);
-            execute(sendPhoto);
-        } catch (Exception e){
-            System.out.println("File not found");
-            e.printStackTrace();
-        }
-
-        String info = book.getTitle()
-                + "\nАвтор" + book.getAutorName()
-                + "\nЖанр" + book.getGenres()
-                + "\n\nОписание\n" + book.getDescription()
-                + "\n\nКоличество лайков " + book.getLikes()
-                + "\n\nПоследние комментарии\n" + book.getCommentList();
-
-        return info;
-    }
-
-
-*/
 }
