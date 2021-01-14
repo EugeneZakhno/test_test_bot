@@ -1,6 +1,4 @@
 public class Bot /* extends TelegramLongPollingBot*/ {
-     Создаём объект карточки
-
 
     Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
