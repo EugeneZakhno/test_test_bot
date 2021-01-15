@@ -37,9 +37,7 @@ public class Bot /* extends TelegramLongPollingBot*/ {
         if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет")) {
             return "Здравствуйте, хотите совершить перевод?";
         }
-        if(msg.contains("Информация о карточке")){
-            return getInfoCard();
-        }
+
         return msg;
     }
 
