@@ -39,7 +39,7 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     public String input(String msg){
-        if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет")) {
+        if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет") || msg.contains("Как дела?")) {
             return "Здравствуйте, хотите совершить перевод?";
         }
 
