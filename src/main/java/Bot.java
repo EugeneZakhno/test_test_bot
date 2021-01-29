@@ -2,12 +2,13 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.apache.log4j.Logger;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 public class Bot extends TelegramLongPollingBot {
-
-    private static final long RECONNECT_PAUSE = 100 ;
+    private static final Logger log = Logger.getLogger(Bot.class);
+    final int RECONNECT_PAUSE =10000; ;
     Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
     private long chat_id;
