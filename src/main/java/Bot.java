@@ -50,7 +50,6 @@ public class Bot extends TelegramLongPollingBot {
         if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет") || msg.contains("Как дела?")) {
             return "Здравствуйте, хотите совершить перевод?";
         }
-
         return msg;
     }
     public void botConnect() {
@@ -62,8 +61,8 @@ public class Bot extends TelegramLongPollingBot {
             log.error("Cant Connect. Pause " + RECONNECT_PAUSE / 1000 + "sec and try again. Error: " + e.getMessage());
             try {
                 Thread.sleep(RECONNECT_PAUSE);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
+            } catch (InterruptedException exp) {
+                exp.printStackTrace();
                 return;
             }
             botConnect();
