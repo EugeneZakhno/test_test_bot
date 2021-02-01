@@ -1,3 +1,5 @@
+package entity;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.apache.log4j.Logger;
@@ -25,9 +27,7 @@ public class Bot extends TelegramLongPollingBot {
       //SendMassage-класс для отправки сообщений  //setChatId - выставляет ИД человека который написал боту
       //update.getMessage().getChatId() - ИД того-же человека
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
-
         chat_id = update.getMessage().getChatId();
-
         sendMessage.setText(input(update.getMessage().getText()));
             try {
                 execute(sendMessage);
