@@ -1,3 +1,5 @@
+package entity;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
 public class Card {
