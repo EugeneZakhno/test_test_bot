@@ -2,6 +2,8 @@ package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.log4j.Logger;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -11,6 +13,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.*;
 
 @AllArgsConstructor
@@ -31,8 +34,14 @@ public class Bot extends TelegramLongPollingBot {
       //update.getMessage().getChatId() - ИД того-же человека
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
         chat_id = update.getMessage().getChatId();
-        sendMessage.setText(input(update.getMessage().getText()));
-            try {
+        try {
+            sendMessage.setText(input(update.getMessage().getText()));
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
                 execute(sendMessage);
             } catch (TelegramApiException e) {
                 e.printStackTrace();
@@ -55,16 +64,19 @@ public class Bot extends TelegramLongPollingBot {
         }
         if (msg.contains("3454646645564664") || msg.contains("68416719817981798") || msg.contains("684269898219889") || msg.contains("52987988798719")) {
 
-            URL url = new URL("https://www.example.com/login");
-            URLConnection con = null;
+            PostMethod post = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/token");
+            NameValuePair[] data = {
+                    new NameValuePair("user", "joe"),
+                    new NameValuePair("password", "bloggs")
+            };
+            post.setRequestBody(data);
+            // execute method and handle any error responses.
             try {
-                con = url.openConnection();
+                InputStream in = post.getResponseBodyAsStream();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            HttpURLConnection http = (HttpURLConnection)con;
-            http.setRequestMethod("POST"); // PUT is another valid option
-            http.setDoOutput(true);
+             // handle response.
             return "Ok";
         }
         return msg;
