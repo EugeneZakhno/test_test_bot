@@ -66,8 +66,8 @@ public class Bot extends TelegramLongPollingBot {
 
             PostMethod post = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/token");
             NameValuePair[] data = {
-                    new NameValuePair("user", "joe"),
-                    new NameValuePair("password", "bloggs")
+                    new NameValuePair("src.pan", "3454646645564664"),
+                    new NameValuePair("dsc.pan", "bloggs")
             };
             post.setRequestBody(data);
             // execute method and handle any error responses.
