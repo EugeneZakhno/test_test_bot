@@ -12,19 +12,16 @@ public class Transfer {
             return "Здравствуйте, хотите совершить перевод?\nВведите номер карты:";
         }
         if (msg.contains("3454646645564664") || msg.contains("68416719817981798") || msg.contains("684269898219889") || msg.contains("52987988798719")) {
-
-
-
-
-            PostMethod post = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/token");
+            PostMethod postToken = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/token");
+            PostMethod postStart = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/payment/start");
             NameValuePair[] data = {
                     new NameValuePair("src.pan", "3454646645564664"),
-                    new NameValuePair("dsc.pan", "bloggs")
+                    new NameValuePair("dsc.pan", "4454646645564664")
             };
-            post.setRequestBody(data);
+            postToken.setRequestBody(data);
             // execute method and handle any error responses.
             try {
-                InputStream in = post.getResponseBodyAsStream();
+                InputStream in = postToken.getResponseBodyAsStream();
             } catch (IOException e) {
                 e.printStackTrace();
             }
