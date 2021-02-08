@@ -1,4 +1,4 @@
-import entity.Bot;
+import entity.TelegramBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
@@ -13,9 +13,9 @@ public class Main {
         TelegramBotsApi telegram = new TelegramBotsApi();
 
         //3. создаем объект самого бота
-        Bot bot = new Bot();
+        TelegramBot telegramBot = new TelegramBot();
         try {
-            telegram.registerBot(bot);
+            telegram.registerBot(telegramBot);
         }catch (TelegramApiRequestException e){
             e.printStackTrace();
         }

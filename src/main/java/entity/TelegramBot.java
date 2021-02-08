@@ -18,8 +18,8 @@ import java.net.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class Bot extends TelegramLongPollingBot {
-    private static final Logger log = Logger.getLogger(Bot.class);
+public class TelegramBot extends TelegramLongPollingBot {
+    private static final Logger log = Logger.getLogger(TelegramBot.class);
     final int RECONNECT_PAUSE =10000; ;
     Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
@@ -29,18 +29,11 @@ public class Bot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         //Обновить информацию о пользователе:
         update.getUpdateId();
-
       //SendMassage-класс для отправки сообщений  //setChatId - выставляет ИД человека который написал боту
       //update.getMessage().getChatId() - ИД того-же человека
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
         chat_id = update.getMessage().getChatId();
-        try {
-            sendMessage.setText(input(update.getMessage().getText()));
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        sendMessage.setText(Transfer.input(update.getMessage().getText()));
         try {
                 execute(sendMessage);
             } catch (TelegramApiException e) {
@@ -58,29 +51,7 @@ public class Bot extends TelegramLongPollingBot {
         return "1381210707:AAH68fziyIQE91UlKRQC_I1ftdr-KXTfEoQ";
     }
 
-    public String input(String msg) throws ProtocolException, MalformedURLException {
-        if (msg.contains("Hi") || msg.contains("Hello") || msg.contains("Привет") || msg.contains("Как дела?")) {
-            return "Здравствуйте, хотите совершить перевод? \n Введите номер карты";
-        }
-        if (msg.contains("3454646645564664") || msg.contains("68416719817981798") || msg.contains("684269898219889") || msg.contains("52987988798719")) {
 
-            PostMethod post = new PostMethod("https://openapi-entry-api2.intervale.ru/api/v4/P2PCARD2CARDNET10BE51947C120CCD8/token");
-            NameValuePair[] data = {
-                    new NameValuePair("src.pan", "3454646645564664"),
-                    new NameValuePair("dsc.pan", "bloggs")
-            };
-            post.setRequestBody(data);
-            // execute method and handle any error responses.
-            try {
-                InputStream in = post.getResponseBodyAsStream();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-             // handle response.
-            return "Ok";
-        }
-        return msg;
-    }
     public void botConnect() {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {
