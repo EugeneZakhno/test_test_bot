@@ -20,7 +20,7 @@ import java.net.*;
 @NoArgsConstructor
 public class TelegramBot extends TelegramLongPollingBot {
     private static final Logger log = Logger.getLogger(TelegramBot.class);
-    final int RECONNECT_PAUSE =10000; ;
+    final int RECONNECT_PAUSE =100000; ;
     Card card = new Card();
     // создаём  приватную глобальную переменную,  что-бы было проще брать id из чата
     private long chat_id;
