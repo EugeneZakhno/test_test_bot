@@ -8,7 +8,7 @@ import java.io.InputStream;
 public class Transfer {
 
     public static String input(String msg)  {
-        if (msg.contains("/start") || msg.contains("/") || msg.contains("Привет") || msg.contains("Hello")) {
+        if (msg.contains("/start") || msg.contains("/") || msg.contains("Привет") ) {
             return "Здравствуйте, хотите совершить перевод?\nВведите номер карты:";
         }
         if (msg.contains("3454646645564664") || msg.contains("68416719817981798") || msg.contains("684269898219889") || msg.contains("52987988798719")) {
